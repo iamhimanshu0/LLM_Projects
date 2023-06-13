@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 
-openai.api_type = "azure"
-openai.api_base = "https://gpt-poc-vd.openai.azure.com/"
-openai.api_version = "2022-12-01"
+openai.api_type = "*****"
+openai.api_base = "********"
+openai.api_version = "******"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def main():
@@ -24,7 +24,8 @@ def main():
         llm = AzureOpenAI(deployment_name="text-davinci-003", 
                           model_name="text-davinci-003", temperature=0)
 
-        agent = create_csv_agent(llm, "data.csv", verbose=True)
+#         agent = create_csv_agent(llm, "data.csv", verbose=True
+        agent = create_csv_agent(llm, user_csv, verbose=True)        
         print("this is agent ", agent)
         if user_question and user_question != "":
             response = agent.run(user_question)
